@@ -12,23 +12,23 @@ terraform {
 }
 
 # openstack
-data "template_file" "zed_user_data" {
-  template = file("${path.module}/zed.cfg")
+data "template_file" "openstack_user_data" {
+  template = file("${path.module}/openstack.cfg")
 }
 
-data "template_file" "zed_network_config" {
-  template = file("${path.module}/zed-network.cfg")
+data "template_file" "openstack_network_config" {
+  template = file("${path.module}/openstack-network.cfg")
 }
 
-resource "libvirt_cloudinit_disk" "zed-cloudinit" {
-  name           = "zed-cloudinit.iso"
+resource "libvirt_cloudinit_disk" "openstack-cloudinit" {
+  name           = "openstack-cloudinit.iso"
   pool           = "vms"
-  user_data      = data.template_file.zed_user_data.rendered
-  network_config = data.template_file.zed_network_config.rendered
+  user_data      = data.template_file.openstack_user_data.rendered
+  network_config = data.template_file.openstack_network_config.rendered
 }
 
-resource "libvirt_volume" "zed-vda" {
-  name             = "zed-vda.qcow2"
+resource "libvirt_volume" "openstack-vda" {
+  name             = "openstack-vda.qcow2"
   pool             = "vms"
   base_volume_name = "ubuntu-jammy.img"
   base_volume_pool = "isos"
@@ -37,8 +37,8 @@ resource "libvirt_volume" "zed-vda" {
 }
 
 
-resource "libvirt_domain" "zed" {
-  name   = "zed"
+resource "libvirt_domain" "openstack" {
+  name   = "openstack"
   memory = "16384"
   vcpu   = "8"
 
@@ -46,7 +46,7 @@ resource "libvirt_domain" "zed" {
     mode = "host-passthrough"
   }
 
-  cloudinit = libvirt_cloudinit_disk.zed-cloudinit.id
+  cloudinit = libvirt_cloudinit_disk.openstack-cloudinit.id
 
   console {
     type        = "pty"
@@ -76,7 +76,7 @@ resource "libvirt_domain" "zed" {
   }
 
   disk {
-    volume_id = libvirt_volume.zed-vda.id
+    volume_id = libvirt_volume.openstack-vda.id
   }
 
 
