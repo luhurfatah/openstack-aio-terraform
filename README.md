@@ -32,5 +32,9 @@ To use this configuration, make sure you have Terraform installed, and modify th
 ```bash
 terraform init
 terraform apply
+```
+After the VM is successfully built, you can see the log of cloud init using this command :
+```
+ssh <ip VM>
 tail -f /var/log/cloud-init-output.log 
 ```
