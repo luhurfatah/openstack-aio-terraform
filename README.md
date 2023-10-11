@@ -17,28 +17,20 @@ sudo virsh pool-define-as \
     --target /data/isos
 ```
 
-# Specifification
-- VM OS: Ubuntu 22
-- Openstack: Zed
+# Details
 
+This repository contains Terraform configuration files for deploying an OpenStack instance using the libvirt provider. The configuration includes:
 
-# How to run?
-Initialize terraform
-```
-teraform init
-```
+- `main.tf`: Terraform configuration file for setting up the OpenStack instance.
+- `openstack-network.cfg`: Network configuration file for the OpenStack instance.
+- `openstack.cfg`: Cloud-init configuration file for the OpenStack instance.
 
-Deploy VMs
-```
+## Usage
+
+To use this configuration, make sure you have Terraform installed, and modify the configuration files as needed. Then, run:
+
+```bash
+terraform init
 terraform apply
-```
-
-SSH into the VM
-```
-ssh 10.10.10.10
-```
-
-Tail the log
-```
 tail -f /var/log/cloud-init-output.log 
 ```
