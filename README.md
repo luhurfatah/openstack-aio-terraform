@@ -25,7 +25,7 @@ This repository contains Terraform configuration files for deploying an OpenStac
 - `openstack-network.cfg`: Network configuration file for the OpenStack instance.
 - `openstack.cfg`: Cloud-init configuration file for the OpenStack instance.
 
-## Usage
+# Usage
 
 To use this configuration, make sure you have Terraform installed, and modify the configuration files as needed. Then, run:
 
