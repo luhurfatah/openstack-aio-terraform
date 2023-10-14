@@ -19,11 +19,11 @@ sudo virsh pool-define-as \
 
 # Details
 
-This repository contains Terraform configuration files for deploying an OpenStack instance using the libvirt provider. The configuration includes:
+This repository contains Terraform configuration files for deploying an KVM instance using the libvirt provider. The configuration includes:
 
-- `main.tf`: Terraform configuration file for setting up the OpenStack instance.
-- `openstack-network.cfg`: Network configuration file for the OpenStack instance.
-- `openstack.cfg`: Cloud-init configuration file for the OpenStack instance.
+- `main.tf`: Terraform configuration file for setting up the KVM instance.
+- `openstack-network.cfg`: Network configuration file for the KVM instance.
+- `openstack.cfg`: Cloud-init configuration file for the KVM instance.
 
 # Usage
 
